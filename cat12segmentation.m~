@@ -1,14 +1,10 @@
 function cat12segmentation(Path,DBM,SBM,nproc)
 %   Segmentation script
 %   PARAMS
-%       Path: Where is the subject folder ?
-%       DBM: Should the jacobian matrix of deformation be estimated ?
-%       SBM: Should the brain surface be estimated ?
-%       nproc: The number of simultaneus processes. It is recommended not
-%       to excede half of the computer cores available.
-%   
-%   !! Some paths may be susceptible to change depending on your MATLAB
-%   installation. It is typically found in the /local folder.
+%       Path:
+%       DBM:
+%       SBM:
+%       nproc: The number of simultaneus processes 
 %
 
 Subj_dir = dir([Path '/*']);

@@ -1,10 +1,10 @@
-function cat12quality_control(Path,File,slice)
+function cat12quality_control(Path,File)
 % Display of all subjects from the population for quality control in one
 % image
 %   PARAMS
 %       Path : Folder where the individual subject folders are
 %       File : Name of the file to display (assumes the name is the same
-%       for all subjects).
+%       for all subjects
 
 Subj_dir = dir([Path '*']);
 Subj_dir = Subj_dir(arrayfun(@(x) ~strcmp(x.name(1),'.'),Subj_dir));
@@ -22,7 +22,7 @@ spm_jobman('initcfg');
 matlabbatch{1}.spm.tools.cat.tools.showslice.data_vol = liste_anat';
 matlabbatch{1}.spm.tools.cat.tools.showslice.scale = 0;
 matlabbatch{1}.spm.tools.cat.tools.showslice.orient = 3;
-matlabbatch{1}.spm.tools.cat.tools.showslice.slice = slice;
+matlabbatch{1}.spm.tools.cat.tools.showslice.slice = 125;
 spm('defaults', 'FMRI');
 spm_jobman('run', matlabbatch);
 clear matlabbatch

@@ -7,21 +7,16 @@
 %   Built from CAT12 manual: dbm.neuro.uni-jena.de/cat12/CAT12-Manual.pdf
 %
 %   PARAMS : 
-%       NIFTI: Are your images already in Nifti format ? [1:yes, 0:no]. If
-%       not DICOM to NIFTI conversion will take place
-%       DBM : Do you want to do deformation-based analysis ? [1:yes, 0:no]
-%       SMB : Do you want to do surface-based analysis ? [1:yes, 0:no]. If
-%       both DBM=SBM=0 only VBM will be possible.
-%       Path1 and Path2: Paths with the subject folders for the first and
-%       second population
+%       NIFTI: Are your images already in Nifti format ? [1:yes, 0:no] If not DICOM to NIFTI conversion will take place
+%       DBM : 
 %
 %--------------------------------------------------------------------------
 
-NIFTI = 1;
-DBM = 1; 
-SBM = 1; 
-Path1 = '/home/veronica/Donnees/PPMI/Volumetrie_PPMI/Control-T1/'; 
-Path2 = '/home/veronica/Donnees/PPMI/Volumetrie_PPMI/PD-T1/'; 
+NIFTI = 1; % Are your images already in Nifti format ? [1:yes, 0:no] If not DICOM to NIFTI conversion will take place
+DBM = 1; % Do you want to do deformation-based analysis ? [1:yes, 0:no]
+SBM = 1; % Do you want to do surface-based analysis ? [1:yes, 0:no] If both DBM=SBM=0 only VBM will be possible.
+Path1 = '/home/veronica/Donnees/PPMI/Volumetrie_PPMI/Control-T1/'; % Path for the first population
+Path2 = '/home/veronica/Donnees/PPMI/Volumetrie_PPMI/PD-T1/'; % Path for the second population
 
 %% DICOM TO NIFTI CONVERSION 
 % Usage of dcm2nii for all of the subjects in path, the anatomical scan is named 'Anat.nii'
@@ -36,12 +31,10 @@ cat12segmentation(Path1,DBM,SBM,2) % 1st : Path to files, 2 and 3rd: defined abo
 cat12segmentation(Path2,DBM,SBM,2)
 
 %% QUALITY CONTROL
-% Display of all subjects from the population for quality control in one
-% image
+% 
 file_to_control='mri/wmAnat.nii';
-slice = 125; % Slice to display
-cat12quality_control(Path1,file_to_control,slice);
-cat12quality_control(Path2,file_to_control,slice);
+cat12quality_control(Path1,file_to_control);
+cat12quality_control(Path2,file_to_control);
 
 %% CHECK HOMOGENEITY
 % 

@@ -1,4 +1,12 @@
 function extractNorg(Path,clean)
+%   Extracts Nifti files from DICOM and organizes them.
+%
+%   The script supposes that <Path> is a folder containing individual
+%   subject folders with a DICOM inside. In result, the individual subject
+%   folders are preserved and contain the extracted anatomical scan called
+%   <Anat.nii>. If the option "clean" is chosen, the original DICOM folder
+%   will be deleted.
+
 cd(Path)
 Doss= dir([Path '*']); % Every subfolder has the scans of one subject
 Doss = Doss(arrayfun(@(x) ~strcmp(x.name(1),'.'),Doss));
